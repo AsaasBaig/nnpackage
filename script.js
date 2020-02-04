@@ -1,5 +1,22 @@
 import {MnistData} from './data.js';
 
+async function run() {
+  const data = new MnistData();
+  const model = getModel();
+
+  tfvis.show.modelSummary({name: 'Model Architecture'}, model);
+
+  await data.load();
+  await showExamples(data);
+  await train(model, data);
+  await showAccuracy(model, data);
+  await showConfusion(model, data);
+
+}
+
+document.getElementById("train").addEventListener("click", run());
+const classNames = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+
 async function showExamples(data) {
   // Create a container in the visor
   const surface =
@@ -19,6 +36,7 @@ async function showExamples(data) {
     });
 
     const canvas = document.createElement('canvas');
+
     canvas.width = 28;
     canvas.height = 28;
     canvas.style = 'margin: 4px;';
@@ -28,7 +46,6 @@ async function showExamples(data) {
     imageTensor.dispose();
   }
 }
-
 
 async function train(model, data) {
   const metrics = ['loss', 'val_loss', 'acc', 'val_acc'];
@@ -128,24 +145,6 @@ function getModel() {
   return model;
 }
 
-async function run() {
-  const data = new MnistData();
-  const model = getModel();
-
-  tfvis.show.modelSummary({name: 'Model Architecture'}, model);
-
-  await data.load();
-  await showExamples(data);
-  await train(model, data);
-  await showAccuracy(model, data);
-  await showConfusion(model, data);
-
-}
-
-document.addEventListener('DOMContentLoaded', run);
-
-const classNames = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
-
 function doPrediction(model, data, testDataSize = 500) {
   const IMAGE_WIDTH = 28;
   const IMAGE_HEIGHT = 28;
@@ -157,7 +156,6 @@ function doPrediction(model, data, testDataSize = 500) {
   testxs.dispose();
   return [preds, labels];
 }
-
 
 async function showAccuracy(model, data) {
   const [preds, labels] = doPrediction(model, data);

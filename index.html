@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css" />
   <title>Neural Networks</title>
 
   <!-- Import TensorFlow.js -->
@@ -19,6 +20,86 @@
 
 </head>
 
+
 <body>
+
+  <div class="tfjs-example-container">
+    <section class='title-area'>
+      <h1>Convolutional Neural Network: Digit Recognition </h1>
+      <p class='subtitle'>
+        Train a model to recognise handwritten digits from the MNIST database using the TensorFlow.js API.
+      </p>
+    </section>
+
+    <section>
+      <p class='section-head'>Description</p>
+      <p>
+        This example lets you train a handwritten digit recogniser using a Convolutional Neural Network
+        (also known as a ConvNet or CNN).
+        <br><br>
+        Throughout the training and classification phase there will be labels and descriptions of what tasks the CNN
+        is undergoing.
+      </p>
+    </section>
+
+    <section>
+      <p class='section-head'>Convolutional Neural Network</p>
+      
+    </section>
+
+    <section>
+      <p class='section-head'>Training Parameters</p>
+
+      <div>
+        <p>
+          Once the data is loaded, we must train the model with this data for a specific number of set occurances.
+          <br> 
+          1 Epoch = 1 set occurance.
+        </p>
+
+        <label>Number of training epochs:</label>
+        <input id="train-epochs" value="2">
+      </div>
+
+      <button id="train" onclick="run()">Train Model</button>
+    </section>
+
+    <section>
+      <p class='section-head'>Training Statistics</p>
+      <p id="status"></p>
+      <p id="message"></p>
+      <div>
+        <script>
+          const data = [
+            { index: 0, value: 50 },
+            { index: 1, value: 100 },
+            { index: 2, value: 150 },
+          ];
+
+          // Render to visor
+          const surface = { name: 'Bar chart', tab: 'Charts' };
+          tfvis.render.barchart(surface , data);  
+        </script>
+      </div>
+
+      <div id="stats">
+        <div class="canvases">
+          <label id="loss-label"></label>
+          <div id="loss-canvas"></div>
+        </div>
+        <div class="canvases">
+          <label id="accuracy-label"></label>
+          <div id="accuracy-canvas"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class='section-head'>Predictions</p>
+      <div id="images"></div>
+    </section>
+
+  </div>
+
 </body>
 </html>
