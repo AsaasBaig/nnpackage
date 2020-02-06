@@ -61,26 +61,13 @@
         <input id="train-epochs" value="2">
       </div>
 
-      <button id="train" onclick="run()">Train Model</button>
+      <button id="train">Train Model</button>
     </section>
 
     <section>
       <p class='section-head'>Training Statistics</p>
       <p id="status"></p>
       <p id="message"></p>
-      <div>
-        <script>
-          const data = [
-            { index: 0, value: 50 },
-            { index: 1, value: 100 },
-            { index: 2, value: 150 },
-          ];
-
-          // Render to visor
-          const surface = { name: 'Bar chart', tab: 'Charts' };
-          tfvis.render.barchart(surface , data);  
-        </script>
-      </div>
 
       <div id="stats">
         <div class="canvases">
