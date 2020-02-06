@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css" />
+  <title>CNN - Image Recognition</title>
+
+  <!-- Import TensorFlow.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+  <!-- Import tfjs-vis -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis@1.0.2/dist/tfjs-vis.umd.min.js"></script>
+
+  <!-- Import the data file -->
+  <script src="data.js" type="module"></script>
+
+  <!-- Import the main script file -->
+  <script src="script.js" type="module"></script>
+
+</head>
+
+
+<body>
+
+  <div class="page-container">
+    <section class='title-area'>
+      <h1>Convolutional Neural Network: Digit Recognition </h1>
+      <p class='subtitle'>
+        Train a model to recognise handwritten digits from the MNIST database using the TensorFlow.js API.
+      </p>
+    </section>
+
+    <section>
+      <p class='section-head'>Description</p>
+      <p>
+        This example lets you train a handwritten digit recogniser using a Convolutional Neural Network
+        (also known as a ConvNet or CNN).
+        <br><br>
+        Throughout the training and classification phase there will be an explanation of the tasks that the CNN
+        is undergoing.
+      </p>
+    </section>
+
+    <section>
+      <p class='section-head'>Convolutional Neural Network</p>
+      
+    </section>
+
+    <section>
+      <p class='section-head'>Training Parameters</p>
+
+      <div>
+        <p>
+          Once the data is loaded, we must train the model with this data for a specific number of set occurances.
+          <br> 
+          1 Epoch = 1 set occurance.
+        </p>
+
+        <label>Number of training epochs:</label>
+        <input id="train-epochs" value="2">
+      </div>
+
+      <button id="train">Train Model</button>
+    </section>
+
+    <section>
+      <p class='section-head'>Training Statistics</p>
+      <p id="status"></p>
+      <p id="message"></p>
+
+      <div id="stats">
+        <div class="canvases">
+          <label id="loss-label"></label>
+          <div id="loss-canvas"></div>
+        </div>
+        <div class="canvases">
+          <label id="accuracy-label"></label>
+          <div id="accuracy-canvas"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class='section-head'>Predictions</p>
+      <div id="images"></div>
+    </section>
+
+  </div>
+
+</body>
+</html>

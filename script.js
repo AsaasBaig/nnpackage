@@ -15,6 +15,7 @@ async function run() {
 }
 
 document.getElementById("train").addEventListener("click", run, true);
+
 const classNames = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
 
 async function showExamples(data) {
