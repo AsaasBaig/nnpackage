@@ -3,19 +3,26 @@
     padding: 5px 10px 5px 10px;
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
-    background-image: linear-gradient(to right, #8290a0 0%, #7f8c9b 51%, #4f5964 100%);
+    background-image: linear-gradient(to right, #525a64 0%, #393f46 51%, #272c31 100%);
     color: whitesmoke;
     border-style: none;
     border-radius: 5px;
+    box-shadow: 0px 1px 2px black;
 
     -ms-transition: all 0.25s linear; /* IE 10 */
     -moz-transition: all 0.25s linear; /* Firefox */
     -webkit-transition: all 0.25s linear; /*safari and chrome */
 }
-#train:hover{
-    padding-left: 15px;
+#train:hover {
+    padding-left: 20px;
     cursor: pointer;
-    color: #89ead9;
+    color: #8cea89;
+}
+
+#train:disabled {
+    cursor: default;
+    padding: 5px 10px 5px 10px;
+    color: whitesmoke;
 }
 
 h1 {

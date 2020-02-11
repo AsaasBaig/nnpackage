@@ -14,7 +14,18 @@ async function run() {
 
 }
 
-document.getElementById("train").addEventListener("click", run, true);
+// Disable button and input on click, and then run classification for MNIST.
+const trainButton = document.getElementById("train")
+const trainEpochs = document.getElementById("train-epochs")
+trainButton.addEventListener("click", buttonClick, true);
+function buttonClick() {
+  trainButton.setAttribute("disabled", true);
+  trainButton.innerText = "Classifying...";
+  trainEpochs.setAttribute("disabled", true);
+
+  run();
+}
+
 
 const classNames = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
 
