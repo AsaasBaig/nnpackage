@@ -1,30 +1,32 @@
 import {MnistData} from './data.js';
+import * as ui from './ui.js';
+
+//On train button click, run classification for MNIST.
+const trainButton = document.getElementById("train")
+trainButton.addEventListener("click", run, true);
 
 async function run() {
-  const data = new MnistData();
-  const model = getModel();
+  //Disable ui
+  ui.disableUI();
+
+  const data = new MnistData(); //create new MNIST data object
+  const model = getModel();//assign model to var using getModel func
 
   tfvis.show.modelSummary({name: 'Model Architecture'}, model);
 
+  //call visualisation and data calculation methods
+  ui.setStatus("Loading data...")
   await data.load();
   await showExamples(data);
+  ui.setStatus("Training model... To cancel, refresh page or close browser tab.")
   await train(model, data);
   await showAccuracy(model, data);
   await showConfusion(model, data);
+  ui.setStatus("Training completed.")
 
 }
 
-// Disable button and input on click, and then run classification for MNIST.
-const trainButton = document.getElementById("train")
-const trainEpochs = document.getElementById("train-epochs")
-trainButton.addEventListener("click", buttonClick, true);
-function buttonClick() {
-  trainButton.setAttribute("disabled", true);
-  trainButton.innerText = "Classifying...";
-  trainEpochs.setAttribute("disabled", true);
 
-  run();
-}
 
 
 const classNames = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
@@ -67,9 +69,10 @@ async function train(model, data) {
   const fitCallbacks = tfvis.show.fitCallbacks(container, metrics);
 
   const BATCH_SIZE = 512;
-  //Change size * 10
+  //Change * 10
   const TRAIN_DATA_SIZE = 5500;
   const TEST_DATA_SIZE = 1000;
+  const EPOCHS = ui.getTrainEpochs();
 
   const [trainXs, trainYs] = tf.tidy(() => {
     const d = data.nextTrainBatch(TRAIN_DATA_SIZE);
@@ -90,7 +93,7 @@ async function train(model, data) {
   return model.fit(trainXs, trainYs, {
     batchSize: BATCH_SIZE,
     validationData: [testXs, testYs],
-    epochs: 10,
+    epochs: EPOCHS,
     shuffle: true,
     callbacks: fitCallbacks
   });
