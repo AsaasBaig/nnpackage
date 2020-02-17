@@ -15,6 +15,8 @@
  * =============================================================================
  */
 
+export const IMAGE_H = 28;
+export const IMAGE_W = 28;
 const IMAGE_SIZE = 784;
 const NUM_CLASSES = 10;
 const NUM_DATASET_ELEMENTS = 65000;
@@ -137,6 +139,29 @@ export class MnistData {
     const xs = tf.tensor2d(batchImagesArray, [batchSize, IMAGE_SIZE]);
     const labels = tf.tensor2d(batchLabelsArray, [batchSize, NUM_CLASSES]);
 
+    return {xs, labels};
+  }
+
+  getTrainData() {
+    const xs = tf.tensor4d(
+        this.trainImages,
+        [this.trainImages.length / IMAGE_SIZE, IMAGE_H, IMAGE_W, 1]);
+    const labels = tf.tensor2d(
+        this.trainLabels, [this.trainLabels.length / NUM_CLASSES, NUM_CLASSES]);
+    return {xs, labels};
+  }
+
+  getTestData(numExamples) {
+    let xs = tf.tensor4d(
+        this.testImages,
+        [this.testImages.length / IMAGE_SIZE, IMAGE_H, IMAGE_W, 1]);
+    let labels = tf.tensor2d(
+        this.testLabels, [this.testLabels.length / NUM_CLASSES, NUM_CLASSES]);
+
+    if (numExamples != null) {
+      xs = xs.slice([0, 0, 0, 0], [numExamples, IMAGE_H, IMAGE_W, 1]);
+      labels = labels.slice([0, 0], [numExamples, NUM_CLASSES]);
+    }
     return {xs, labels};
   }
 }
