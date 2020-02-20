@@ -1,3 +1,16 @@
+#accuracy-table {
+    width: 500px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+#confusion-matrix {
+    width: 500px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+#graphs {
+    width: 500px;
+}
 #train {
     margin-top: 10px;
     padding: 5px 10px 5px 10px;
@@ -90,12 +103,16 @@ p {
 
 .prediction-canvas {
     width: 100px;
+    box-shadow: 0px 1px 2px black;
 }
 
 .pred {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 20px;
+    text-align: center;
     line-height: 25px;
     width: 100px;
+    
 }
 
 .pred-correct {
@@ -103,6 +120,7 @@ p {
 }
 
 .pred-incorrect {
+
     background-color: red;
 }
 

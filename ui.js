@@ -37,7 +37,7 @@ export function showTestResults(batch, predictions, labels) {
       const correct = prediction === label;
   
       pred.className = `pred ${(correct ? 'pred-correct' : 'pred-incorrect')}`;
-      pred.innerText = `pred: ${prediction}`;
+      pred.innerText = `Pred: ${prediction}`;
   
       div.appendChild(pred);
       div.appendChild(canvas);
