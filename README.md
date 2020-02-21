@@ -12,6 +12,7 @@ Neural network package website created using Tensorflow.js with model training e
 # Running package locally?
 - Download entire package
    * Run on local hosted server i.e. Python local server using `python -m http.server` in the same directory.
+   * Python hosted files are accessed via `http://localhost:8000/` on any browser.
    
    
 # Training using MNIST dataset
