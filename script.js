@@ -85,12 +85,10 @@ async function train(model, data) {
 }
 
 async function showPredictions(model, data) {
+  //gather 100 test examples from dataset
   const testExamples = 100;
   const examples = data.getTestData(testExamples);
 
-  // Code wrapped in a tf.tidy() function callback will have their tensors freed
-  // from GPU memory after execution without having to call dispose().
-  // The tf.tidy callback runs synchronously.
   tf.tidy(() => {
     const output = model.predict(examples.xs);
 
@@ -103,9 +101,7 @@ async function showPredictions(model, data) {
     // argMax to get the index of the vector element that has the highest
     // probability. This is our prediction.
     // (e.g. argmax([0.07, 0.1, 0.03, 0.75, 0.05]) == 3)
-    // dataSync() synchronously downloads the tf.tensor values from the GPU so
-    // that we can use them in our normal CPU JavaScript code
-    // (for a non-blocking version of this function, use data()).
+
     const axis = 1;
     const labels = Array.from(examples.labels.argMax(axis).dataSync());
     const predictions = Array.from(output.argMax(axis).dataSync());
@@ -117,13 +113,14 @@ async function showPredictions(model, data) {
 function getModel() {
   const model = tf.sequential();
 
+  //set dimensions for input
   const IMAGE_WIDTH = 28;
   const IMAGE_HEIGHT = 28;
   const IMAGE_CHANNELS = 1;
 
-  // In the first layer of our convolutional neural network we have
-  // to specify the input shape. Then we specify some parameters for
-  // the convolution operation that takes place in this layer.
+  // In the first layer of the convolutional neural network, specify input shape.
+  // Then specify parameters for the convolution operation that takes place in this layer.
+  // Kernal size being set to 5x5 with 8 filters
   model.add(tf.layers.conv2d({
     inputShape: [IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS],
     kernelSize: 5,
@@ -153,8 +150,8 @@ function getModel() {
   // higher dimensional data to a final classification output layer.
   model.add(tf.layers.flatten());
 
-  // Our last layer is a dense layer which has 10 output units, one for each
-  // output class (i.e. 0, 1, 2, 3, 4, 5, 6, 7, 8, 9).
+  // last layer is a dense layer which has 10 output units, one for each
+  // output feature classes (i.e. 0, 1, 2, 3, 4, 5, 6, 7, 8, 9).
   const NUM_OUTPUT_CLASSES = 10;
   model.add(tf.layers.dense({
     units: NUM_OUTPUT_CLASSES,
@@ -163,7 +160,7 @@ function getModel() {
   }));
 
 
-  // Choose an optimizer, loss function and accuracy metric,
+  // choose an optimiser, loss function and accuracy metric,
   // then compile and return the model
   const optimizer = tf.train.adam();
   model.compile({
@@ -189,22 +186,31 @@ function doPrediction(model, data, testDataSize = 500) {
   return [preds, labels];
 }
 
+//async function to run side by side of when the model is being trained.
 async function showAccuracy(model, data) {
+  //use tfvisor to get predictions and labels from model and append to class accuracy 
   const [preds, labels] = doPrediction(model, data);
   const classAccuracy = await tfvis.metrics.perClassAccuracy(labels, preds);
   const container = document.getElementById('accuracy-table');
+  //use the labels and predictions to calculate how accurate the model's predictions were for a class feature.
   tfvis.show.perClassAccuracy(container, classAccuracy, classNames);
 
+  //throw away labels as they will be reset by another function to show other graphs.
   labels.dispose();
 }
 
+//async function to run side by side of when the model is being trained.
 async function showConfusion(model, data) {
+  //get labels and predictions by predicting with the model
   const [preds, labels] = doPrediction(model, data);
   const confusionMatrix = await tfvis.metrics.confusionMatrix(labels, preds);
+  //append confusion matrix to html page
   const container = document.getElementById('confusion-matrix');
+  //render confusion matrix using tensorflow visor with prediction values and class names.
   tfvis.render.confusionMatrix(
       container, {values: confusionMatrix}, classNames,);
 
   labels.dispose();
+  //set ui status.
   ui.setStatus("Training completed.")
 }
