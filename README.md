@@ -5,7 +5,7 @@ Neural network package website created using Tensorflow.js with model training e
 # Landing
 - Main landing with links to:
     * Deep Neural Networks page
-    * Recurrent Neural Networks page
+    * Recurrent Neural Networks page [Under construction]
     * Convolutional Neural Networks page
 
 
