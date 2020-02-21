@@ -37,9 +37,10 @@
     </section>
 
     <section>
-        <p class='section-head'>What is a neuron?</p>
+        <p class='section-head'>Neurons</p>
+        <p class='content-header'>What is a Neuron?</p>
         <p>
-            Simply put, a human brain is a real life complex example of Deep Neural Networks work.
+            A human brain is a real life complex example of Deep Neural Networks work.
             <br><br>
             Signals in the brain are sent between neurons via synapses and depending on which neuron
             is activated by a signal, a different outcome is achieved.
@@ -66,13 +67,28 @@
             Depending on the task at hand, the amount of layers between an input to a Neural Network identifying a correct output can vary.
         </p>
         <img src="https://raw.githubusercontent.com/AsaasBaig/nnpackage/gh-pages/images/DNNNeuronLayout.png" alt="Basic Network Layout" width="450px" height="250px">
+        <p class="highlighted-text">
+            A realistic Dense Neural Network will consist of many connections through every layer (Hence Dense).
+            <br>
+            Each hidden layer neuron will have a single connection to each node in the next layer, increasing the 
+            network's density.
+        </p>
     </section>
 
     <section>
         <p class='section-head'>Activation</p>
-        <p>
-            
+        <p class='highlighted-text'>
+            Activation Functions are applied upon Neurons to enable the neuron to react accordingly based on the input value
+            it receives from the previous layer of neurons. 
+            <br>
+            An example would be neurons that are set to only output a signal if the incoming
+            signal is greater than 0 of value.
         </p>
+        <p class='content-header'>Rectified Linear Unit - [ReLU]</p>
+        <img src="/images/DNNRelu.png" alt="ReLU Activation" width="350px" height="250px">
+        <p></p>
+        <p class='content-header'>Leaky Rectified Linear Unit - [LReLU]</p>
+        <img src="/images/DNNLRelu.png" alt"LReLU Activation" width="350px" height="250px">         
     </section>
 
     <section>
@@ -86,29 +102,27 @@
             <br><br><br>
         </p>
         <img src="https://raw.githubusercontent.com/AsaasBaig/nnpackage/gh-pages/images/CNNShoe.png" alt="Regular Shoe to Pixelated Shoe" width="450px" height="100px">
+        <p class="highlighted-text">
+            Generally... It is easier to work with Greyscale images as that way the neural network does not have to take colour
+            into account.
+            <br>
+            In real life situations, colour is just as important to perfectly classify an object.
+        </p>
         <p>
             This is different with machine learning as we have to teach an Artificial Neural Network to 
             detect these patterns as our brain has perfected over many years of experience.
             <br><br>
             How it works is that it slices images and flattens them into matrixes of numbers, which are then
-            filtered through multiple convolutional layers of neurons to detect patterns.
+            filtered through multiple convolutional layers of neurons which will detect patterns within the slices.
             <br>
-            Generally... It is easier to work with Greyscale images as that way the neural network does not have to take colour
-            into account. 
+            The patterns are then processed further until an image can be formed which may fit an test output.
             <br>
-            In real life situations, colour is just as important to perfectly classify an object.
-            <br><br>
-            This can apply to many real life objects, creatures or even people to recognise who or what something is based on an image.
-            <br><br>
-
-            A working example with handwritten digits can be seen <a href="cnn.html">[HERE]</a>.
         </p>
-    </section>
-
-    <section>
-        <p class='section-head'>RNN</p>
         <p>
-            
+            This type of pattern recognition can be applied to many real life objects,
+            creatures or even people to then recognise who or what something is via image patterns.
+            <br><br>
+            A working example with handwritten digits can be seen <a href="cnn.html">[HERE]</a>.
         </p>
     </section>
 

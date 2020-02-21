@@ -213,5 +213,14 @@ p {
     color: #545f6b;
 }
 
+.content-header {
+    font-weight: 200;
+    font-size: 17.5px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #545f6b;
+    padding-left: 15px;
+    border-left: 2.5px solid #7179ee;
+}
+
 
 
