@@ -56,28 +56,6 @@ label {
     padding: 6px 0 6px 0;
 }
 
-li {
-    cursor: pointer;
-    padding: 2.5px 10px 2.5px 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border-left: 2.5px solid #545f6b;
-}
-
-li a {
-    color: #545f6b;
-    text-decoration: none;
-
-    -ms-transition: padding 0.25s linear; /* IE 10 */
-    -moz-transition: padding 0.25s linear; /* Firefox */
-    -webkit-transition: padding 0.25s linear; /*safari and chrome */
-}
-
-li a:hover{
-    padding-left: 20px;
-    color: #545f6b;
-}
-
 p {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: #545f6b;
@@ -90,7 +68,7 @@ p {
 .code-block {
     width: 500px;
     min-width: 450px;
-    border-radius: 10px;
+    border-radius: 5px;
     font-family: monospace;
     background-color: antiquewhite;
     border: 1px solid #c1c1c1;
@@ -102,7 +80,8 @@ p {
     font-size: 15px;
     font-style: oblique;
 }
-.nav{
+
+.main-nav{
     padding-left: 5px;
     padding-right: 5px;
     list-style-type: none;
@@ -112,6 +91,63 @@ p {
     font-weight: 200;
     color: #545f6b;
 }
+
+.main-nav li {
+    cursor: pointer;
+    padding: 2.5px 10px 2.5px 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-left: 2.5px solid #545f6b;
+}
+
+.main-nav li a {
+    color: #545f6b;
+    text-decoration: none;
+
+    -ms-transition: padding 0.25s linear; /* IE 10 */
+    -moz-transition: padding 0.25s linear; /* Firefox */
+    -webkit-transition: padding 0.25s linear; /*safari and chrome */
+}
+
+.main-nav li a:hover{
+    padding-left: 20px;
+    color: #545f6b;
+}
+
+.sub-nav {
+    padding-left: 5px;
+    padding-right: 5px;
+    list-style-type: none;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 200;
+    color: #545f6b;
+}
+
+.sub-nav li{
+    display: inline;
+    cursor: pointer;
+    padding: 2.5px 15px 2.5px 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+}
+
+.sub-nav li a {
+    color: #545f6b;
+    text-decoration: none;
+
+    -ms-transition: border 0.05s linear; /* IE 10 */
+    -moz-transition: border 0.05s linear; /* Firefox */
+    -webkit-transition: border 0.05s linear; /*safari and chrome */
+}
+
+.sub-nav li a:hover{
+    border-bottom: 2.5px solid #545f6b;
+    color: #545f6b;
+}
+
 
 .page-container{
     padding: 25px 50px 50px 50px;

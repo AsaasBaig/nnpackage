@@ -172,6 +172,8 @@ function getModel() {
     metrics: ['accuracy'],
   });
 
+  const container = document.getElementById('graphs');
+  tfvis.show.modelSummary(container, model)
   return model;
 }
 
