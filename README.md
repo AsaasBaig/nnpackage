@@ -1,5 +1,5 @@
-# nnpackage (Neural Network Package)
-Neural network package website created using Tensorflow.js
+# Neural Network Package (nnpackage)
+Neural network package website created using Tensorflow.js with model training example using MNIST dataset.
 
 # Landing
 - Main landing with links to:
