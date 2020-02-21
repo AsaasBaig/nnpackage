@@ -38,9 +38,9 @@
         <br><br>
         Throughout the training and classification phase there will be an explanation of the tasks that the CNN
         is undergoing.
-
         <br><br>
-        This example is based on a simple CNN model that uses a small amount of data from the MNIST dataset for fast results.
+        This example is based on a simple CNN model that uses a small amount of data from 
+        the MNIST dataset for fast results.
         <br>
         The dataset used is limited in order to compute faster on browsers:
         <br>
@@ -60,7 +60,7 @@
       <p>
         The full dataset usually consists of these training and testing sets * 10. Respectively (55000, 10000).
         <br>
-        This would increase the accuracy by 10x as there is 10x more data being iterated over for the network to learn from.
+        Using the full dataset would increase the accuracy as there is 10x more data being used to train the network.
       </p>
     </section>
 
@@ -79,10 +79,48 @@
     });
         </code>
       </pre>
+      <p>
+        An example of how this model is layered (Simplified version)
+      </p>
+      <div id="neuron-image">
+        <img src="/images/CNNLayersMNIST.png" width="550px" height="250px" alt="CNN Layers Graph Perceptron">
+      </div>
+      <p class="highlighted-text">
+        Direction flow is direct input -> Convolutions -> Output in CNN.
+      </p>
+      <p>
+        Input: 
+        <br>
+        The image is flattened as a 28x28 matrix and then each chunk is fed into an individual input node.
+        <br><br>
+      </p>
+      <img src="/images/CNNDataGrid.png" alt="Data with Grid outlines">
+      <p class='highlighted-text'>
+        Image shown is an example of what the input layer data would receive if data was split using an 8x8 matrix.
+      </p>
+      <p>
+        Convolutions:
+        <br>
+        Each convolution detects a specific pattern, i.e. edges, curves, depth to then determine 
+        what the shape represents
+        <br><br>
+        Output: 
+        <br>Decide between which class feature the input resolves to i.e. if the weighting is favouring 2, 
+        the output feature will point to 2.
+        <br>
+        The full efficiency model will have many convolutional layers to enable the network to find the correct patterns
+        to detect the correct number.
+      </p>
+
+      <p>
+        The actual model uses filters and bigger input values to then properly train the network with a larger dataset:
+      </p>
 
       <pre class='code-block'>
         <code>
-    model.add(tf.layers.conv2d({
+      Code taken from script.js getModel() function
+
+      model.add(tf.layers.conv2d({
       inputShape: [IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS],
       kernelSize: 5,
       filters: 8,
@@ -92,7 +130,7 @@
     }));
         </code>
       </pre>
-      <div id="neuron-image"></div>
+
     </section>
 
     <section>
@@ -100,6 +138,8 @@
 
       <div>
         <p>
+          Now to train our own ConvNet using the MNIST dataset...
+          <br><br>
           Once the data is loaded, we must train the model with this data for a specific number of set occurances.
           <br><br> 
           1 Epoch = 1 set occurance.
