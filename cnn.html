@@ -20,7 +20,6 @@
 
 </head>
 
-
 <body>
 
   <div class="page-container">
@@ -32,18 +31,67 @@
     </section>
 
     <section>
-      <p class='section-head'>Description</p>
+      <p class='section-head'>How to use</p>
       <p>
         This example lets you train a handwritten digit recogniser using a Convolutional Neural Network
         (also known as a ConvNet or CNN).
         <br><br>
         Throughout the training and classification phase there will be an explanation of the tasks that the CNN
         is undergoing.
+
+        <br><br>
+        This example is based on a simple CNN model that uses a small amount of data from the MNIST dataset for fast results.
+        <br>
+        The dataset used is limited in order to compute faster on browsers:
+        <br>
+      </p>
+      <pre class='code-block'>
+        <code>
+    Code taken from: script.js - train() function
+
+    //set data sizes
+    const BATCH_SIZE = 512;
+    const TRAIN_DATA_SIZE = 5500;
+    const TEST_DATA_SIZE = 1000;
+    //get epoch value from UI
+    const EPOCHS = ui.getTrainEpochs();
+        </code>
+      </pre>
+      <p>
+        The full dataset usually consists of these training and testing sets * 10. Respectively (55000, 10000).
+        <br>
+        This would increase the accuracy by 10x as there is 10x more data being iterated over for the network to learn from.
       </p>
     </section>
 
     <section>
-      <p class='section-head'>Convolutional Neural Network</p>
+      <p class='section-head'>Network Layout</p>
+      <pre class='code-block'>
+        <code>
+    Code taken from: script.js - train() function
+
+    const [trainXs, trainYs] = tf.tidy(() => {
+      const d = data.nextTrainBatch(TRAIN_DATA_SIZE);
+      return [
+        d.xs.reshape([TRAIN_DATA_SIZE, 28, 28, 1]),
+        d.labels
+      ];
+    });
+        </code>
+      </pre>
+
+      <pre class='code-block'>
+        <code>
+    model.add(tf.layers.conv2d({
+      inputShape: [IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS],
+      kernelSize: 5,
+      filters: 8,
+      strides: 1,
+      activation: 'relu',
+      kernelInitializer: 'varianceScaling'
+    }));
+        </code>
+      </pre>
       <div id="neuron-image"></div>
     </section>
 
@@ -55,6 +103,8 @@
           Once the data is loaded, we must train the model with this data for a specific number of set occurances.
           <br><br> 
           1 Epoch = 1 set occurance.
+          <br>
+          [Increase Epochs for better accuracy]
         </p>
 
         <label>Number of training epochs:</label>

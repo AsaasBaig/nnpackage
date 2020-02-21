@@ -1,43 +1,61 @@
 import {MnistData} from './data.js';
 import * as ui from './ui.js';
 
-//On train button click, run classification for MNIST.
+//on train button click, run classification for MNIST.
 const trainButton = document.getElementById("train")
 trainButton.addEventListener("click", run, true);
 
+//set classnames globally as they represent the features within MNIST dataset.
+const classNames = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+
 async function run() {
-  //Disable ui
+  //disable buttons/input
   ui.disableUI();
 
   const data = new MnistData(); //create new MNIST data object
   const model = getModel();//assign model to var using getModel func
 
   //call visualisation and data calculation methods
+
+  //print data status
   ui.setStatus("Loading data...")
   await data.load();
+  //once data is loaded, await for model training
   await train(model, data);
+  //once model is trained, show prediction images based on training results
   showPredictions(model, data);
+  //show accuracy table and confusion matrix
   await showAccuracy(model, data);
   await showConfusion(model, data);
 
 }
 
-
-const classNames = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
-
+//pull data through and model to an async function.
 async function train(model, data) {
 
+  //set training status
   ui.setStatus("Training model... To cancel, refresh the page or close browser tab.")
 
+  //metrics to be used by the tfvis fitcallback function, metrics will represent the data being output 
+  //within live graph
   const metrics = ['loss', 'val_loss', 'acc', 'val_acc'];
+
+  //set container to html element and show live graph.
   const container = document.getElementById('graphs');
   const fitCallbacks = tfvis.show.fitCallbacks(container, metrics);
 
+  //set data sizes
   const BATCH_SIZE = 512;
   const TRAIN_DATA_SIZE = 5500;
   const TEST_DATA_SIZE = 1000;
+  //get epoch value from UI
   const EPOCHS = ui.getTrainEpochs();
 
+  //reshape the data in current batch to follow appropriate inputs.
+  //in this case, image is split as 28x28 (number of inputs), with convolutions following those inputs to then
+  //assign 1 output out of the 10 features
+
+  //do this for both training batch and testing batch
   const [trainXs, trainYs] = tf.tidy(() => {
     const d = data.nextTrainBatch(TRAIN_DATA_SIZE);
     return [
@@ -54,6 +72,8 @@ async function train(model, data) {
     ];
   });
 
+  //fit model with the reshaped data for (number of epochs retrieved) and fitcallback to represent accuracy
+  //and loss on live graph
   return model.fit(trainXs, trainYs, {
     batchSize: BATCH_SIZE,
     validationData: [testXs, testYs],
