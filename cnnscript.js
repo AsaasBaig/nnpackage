@@ -21,14 +21,16 @@ async function run() {
   const data = new MnistData(); //create new MNIST data object
   const model = getModel();//assign model to var using getModel func
 
-  //call visualisation and data calculation methods
-
   //print data status
   ui.setStatus("Loading data...")
   await data.load();
   //once data is loaded, await for model training
+  //enable visualisations at html
+  ui.enableVisuals();
+
   await train(model, data);
   //once model is trained, show prediction images based on training results
+  ui.showPredictionVisuals();
   showPredictions(model, data);
   //show accuracy table and confusion matrix
   await showAccuracy(model, data);

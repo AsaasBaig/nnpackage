@@ -50,8 +50,8 @@
         <br>
       </p>
       <pre class='code-block'>
-        <code>
-    Code taken from: script.js - train() function
+
+    Code from the training function of the model:
 
     //set data sizes
     const BATCH_SIZE = 512;
@@ -59,7 +59,6 @@
     const TEST_DATA_SIZE = 1000;
     //get epoch value from UI
     const EPOCHS = ui.getTrainEpochs();
-        </code>
       </pre>
       <p>
         The full dataset usually consists of these training and testing sets * 10. Respectively (55000, 10000).
@@ -71,8 +70,8 @@
     <section>
       <p class='section-head'>Network Layout</p>
       <pre class='code-block'>
-        <code>
-    Code taken from: script.js - train() function
+
+    Code from training function of the model 
 
     const [trainXs, trainYs] = tf.tidy(() => {
       const d = data.nextTrainBatch(TRAIN_DATA_SIZE);
@@ -81,7 +80,6 @@
         d.labels
       ];
     });
-        </code>
       </pre>
       <p>
         An example of how this model is layered (Simplified version)
@@ -121,8 +119,8 @@
       </p>
 
       <pre class='code-block'>
-        <code>
-      Code taken from script.js getModel() function
+
+      Code which specifies the design of the network:
 
       model.add(tf.layers.conv2d({
       inputShape: [IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS],
@@ -132,7 +130,6 @@
       activation: 'relu',
       kernelInitializer: 'varianceScaling'
     }));
-        </code>
       </pre>
 
     </section>
@@ -143,13 +140,18 @@
       <div>
 
         <p>
-          Now to train our own ConvNet using the MNIST dataset...
+          Task : Training a Convolutonal Network using the MNIST dataset...
           <br><br>
-          Once the data is loaded, we must train the model with this data for a specific number of set occurances.
-          <br><br> 
-          1 Epoch = 1 set occurance.
+          Once the data is loaded, the model must be trained with training data in order to pick up
+          patterns within handwritten digits.
           <br>
-          [Increase Epochs for better accuracy]
+          This data is processed for a specific number of set occurances.
+          <br><br> 
+          1 Epoch = 1 set occurance. [Increase Epochs for better accuracy]
+          <br><br>
+          Less than 10 Epochs tends to lead result in low accracy. 
+          <br> 
+          If the full dataset of 65000 images were to be used, 2 Epochs would be adequete for highly accurate results.
         </p>
       
         <label>Number of training epochs:</label>
@@ -169,8 +171,10 @@
 
     <section id="accuracy-section">
       <p class='section-head'>Accuracy Results</p>
-      <div id="accuracy-table"></div>
-      <div id="confusion-matrix"></div>
+      <div id="rowtest">
+        <div id="accuracy-table"></div>
+        <div id="confusion-matrix"></div>
+      </div>
     </section>
 
     <section id="images-section">

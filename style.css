@@ -1,9 +1,9 @@
-h1 {
-    font-weight: 200;
-    font-size: 40px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color: #545f6b;
-}
+body { margin: 0; padding: 0; }
+
+h1 { font-weight: 200; font-size: 40px; 
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; color: #545f6b; }
+
+p { font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; color: #545f6b; }
 
 label {
     display: inline-block;
@@ -12,16 +12,6 @@ label {
     width: 250px;
     padding: 6px 0 6px 0;
 }
-
-p {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color: #545f6b;
-}
-body {
-    margin: 0;
-    padding: 0;
-}
-
 
 .page-container{
     padding: 25px 50px 50px 50px;
@@ -37,7 +27,38 @@ a:visited{
     text-decoration: none;
 }
 
+.main-nav{
+    padding-left: 5px;
+    padding-right: 5px;
+    list-style-type: none;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 200;
+    color: #545f6b;
+}
 
+.main-nav li {
+    cursor: pointer;
+    padding: 2.5px 10px 2.5px 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-left: 2.5px solid #545f6b;
+}
+
+.main-nav li a {
+    color: #545f6b;
+    text-decoration: none;
+
+    -ms-transition: padding 0.25s linear; /* IE 10 */
+    -moz-transition: padding 0.25s linear; /* Firefox */
+    -webkit-transition: padding 0.25s linear; /*safari and chrome */
+}
+
+.main-nav li a:hover{
+    padding-left: 10px;
+    color: #545f6b;
+}
 
 .section-head {
     padding-left: 10px;
@@ -162,7 +183,8 @@ code {
     cursor: text;
 }
 .code-block {
-    width: 500px;
+    display: flex;
+    width: 450px;
     min-width: 450px;
     border-radius: 5px;
     font-family: monospace;
@@ -171,11 +193,9 @@ code {
 }
 
 
-
 .canvases {
     display: inline-block;
 }
-
 
 
 .highlighted-text {
@@ -185,53 +205,40 @@ code {
     font-style: oblique;
 }
 
-.main-nav{
-    padding-left: 5px;
-    padding-right: 5px;
-    list-style-type: none;
-    text-transform: uppercase;
-    font-size: 18px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: 200;
-    color: #545f6b;
+
+#graphs {
+    width: 500px;
 }
-
-.main-nav li {
-    cursor: pointer;
-    padding: 2.5px 10px 2.5px 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border-left: 2.5px solid #545f6b;
+#graphs-section {
+    display: none;
 }
-
-.main-nav li a {
-    color: #545f6b;
-    text-decoration: none;
-
-    -ms-transition: padding 0.25s linear; /* IE 10 */
-    -moz-transition: padding 0.25s linear; /* Firefox */
-    -webkit-transition: padding 0.25s linear; /*safari and chrome */
+#graphs-section.active {
+    display: flex;
+    flex-direction: column;
 }
-
-.main-nav li a:hover{
-    padding-left: 10px;
-    color: #545f6b;
+#accuracy-section {
+    display: none;
 }
-
+#accuracy-section.active {
+    display: flex;
+    flex-direction: column;
+}
+#images-section {
+    display: none;
+}
+#images-section.active {
+    display: flex;
+    flex-direction: column;
+}
 #accuracy-table {
     width: 500px;
     margin-bottom: 10px;
     margin-top: 10px;
 }
-
 #confusion-matrix {
     width: 500px;
     margin-bottom: 10px;
     margin-top: 10px;
-}
-
-#graphs {
-    width: 500px;
 }
 
 
@@ -260,6 +267,10 @@ code {
 
 /* Mobile device styles */
 @media (max-width: 768px) {
+
+    img {
+        width: 450px;
+    }
     
     h1 {
         font-size: 30px;
