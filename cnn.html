@@ -7,20 +7,24 @@
   <link rel="stylesheet" href="style.css" />
   <title>CNN - Image Recognition</title>
 
-  <!-- Import TensorFlow.js -->
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
-  <!-- Import tfjs-vis -->
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis@1.0.2/dist/tfjs-vis.umd.min.js"></script>
-
-  <!-- Import the data file -->
-  <script src="data.js" type="module"></script>
-
-  <!-- Import the main script file -->
-  <script src="script.js" type="module"></script>
-
 </head>
 
 <body>
+
+  <nav class="navbar">
+    <div class="logo-title"><a href="index.html" title="Home">Deep Learning</a></div>
+    <a href="#" class="toggle-button">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </a>
+    <div class="navbar-links">
+      <ul>
+        <li><a href="dnn.html">Deep Neural Networks</a></li>
+        <li><a href="rnn.html">Recurrent Neural Networks</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <div class="page-container">
     <section class='title-area'>
@@ -28,14 +32,6 @@
       <p class='subtitle'>
         Train a model to recognise handwritten digits from the MNIST database using the TensorFlow.js API.
       </p>
-    </section>
-
-    <section>
-      <ul class='sub-nav'>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="dnn.html">Deep Neural Networks</a></li>
-        <li><a href="rnn.html">Recurrent Networks</a></li>
-      </ul>
     </section>
 
     <section>
@@ -145,6 +141,7 @@
       <p class='section-head'>Training Parameters</p>
 
       <div>
+
         <p>
           Now to train our own ConvNet using the MNIST dataset...
           <br><br>
@@ -154,20 +151,23 @@
           <br>
           [Increase Epochs for better accuracy]
         </p>
-
+      
         <label>Number of training epochs:</label>
-        <input id="train-epochs" value="2">
+        <input id="train-epochs" value="2" minlength="1" maxlength="2">
+
       </div>
+
       <button id="train">Train Model</button>
       <p id='training-status'></p>
+
     </section>
 
-    <section>
+    <section id="graphs-section">
       <p class='section-head'>Training Statistics</p>
       <div id="graphs"></div>
     </section>
 
-    <section>
+    <section id="accuracy-section">
       <p class='section-head'>Accuracy Results</p>
       <div id="accuracy-table"></div>
       <div id="confusion-matrix"></div>
@@ -179,6 +179,14 @@
     </section>
 
   </div>
+    <!-- Import TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+    <!-- Import tfjs-vis -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis@1.0.2/dist/tfjs-vis.umd.min.js"></script>
+    <!-- Import the data file -->
+    <script src="cnndata.js" type="module"></script>
+    <!-- Import the main script file -->
+    <script src="cnnscript.js" type="module"></script>
 
 </body>
 </html>

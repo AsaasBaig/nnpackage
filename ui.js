@@ -3,6 +3,11 @@ const trainButton = document.getElementById('train');
 const trainEpochs = document.getElementById("train-epochs");
 const statusElement = document.getElementById("training-status");
 const imagesElement = document.getElementById("images");
+const navbarLinks = document.getElementsByClassName("navbar-links")[0]
+
+export function toggleBurgerMenu () {
+  navbarLinks.classList.toggle('active');
+}
 
 //export function = function that can be imported via other script within dir.
 //get training epochs via HTML input element for CNN webpage

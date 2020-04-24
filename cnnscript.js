@@ -1,9 +1,15 @@
-import {MnistData} from './data.js';
+import {MnistData} from './cnndata.js';
 import * as ui from './ui.js';
+
+
+
 
 //on train button click, run classification for MNIST.
 const trainButton = document.getElementById("train")
 trainButton.addEventListener("click", run, true);
+
+const burgerButton = document.getElementsByClassName("toggle-button")[0]
+burgerButton.addEventListener("click", ui.toggleBurgerMenu, true);
 
 //set classnames globally as they represent the features within MNIST dataset.
 const classNames = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];

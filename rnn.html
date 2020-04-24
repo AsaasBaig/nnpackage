@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +12,23 @@
 
 <body>
 
+  <nav class="navbar">
+    <div class="logo-title"><a href="index.html" title="Home">Deep Learning</a></div>
+    <a href="#" class="toggle-button">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </a>
+    <div class="navbar-links">
+      <ul>
+        <li><a href="dnn.html">Deep Neural Networks</a></li>
+        <li><a href="cnn.html">Convolutional Neural Networks</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <div class="page-container">
+
     <section class='title-area'>
       <h1>Recurrent Neural Networks</h1>
       <p class='subtitle'>
@@ -19,14 +36,11 @@
       </p>
     </section>
 
-    <section>
-      <ul class='sub-nav'>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="dnn.html">Deep Neural Network</a></li>
-        <li><a href="cnn.html">Convolutional Network - [Train a live model]</a></li>
-      </ul>
-    </section>
   </div>
+  
+    <!-- Import the main script file -->
+    <script src="rnnscript.js" type="module"></script>
 
 </body>
+
 </html>
