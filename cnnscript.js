@@ -26,7 +26,7 @@ async function run() {
   await data.load();
   //once data is loaded, await for model training
   //enable visualisations at html
-  ui.enableVisuals();
+  ui.toggleVisuals();
 
   await train(model, data);
   //once model is trained, show prediction images based on training results
