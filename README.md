@@ -19,4 +19,4 @@ Neural network package website created using Tensorflow.js with model training e
 The example shown for the CNN is based off a Tensorflow.js tutorial which can also be found [Here](https://www.tensorflow.org/js/tutorials/training/handwritten_digit_cnn)
 
 
-[Live website link](https://asaasbaig.github.io/nnpackage/)
+[Live website link](https://baigss.github.io/nnpackage/)
