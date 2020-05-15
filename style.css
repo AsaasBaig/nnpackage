@@ -177,15 +177,9 @@ a:visited{
     color: whitesmoke;
 }
 
-
-
-code { 
-    cursor: text;
-}
 .code-block {
     display: flex;
     width: 450px;
-    min-width: 450px;
     border-radius: 2.5px;
     font-family: monospace;
     background-color:antiquewhite;
@@ -241,7 +235,12 @@ code {
     margin-top: 10px;
 }
 
-
+pre {
+    width: 400px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-align: justify;
+}
 .prediction-canvas {
     width: 100px;
     box-shadow: 0px 1px 2px black;
@@ -278,7 +277,7 @@ code {
     .subtitle {
         font-size: 20px;
     }
-    .page-container{
+    .page-container{/* change to rems */
         padding: 25px 25px 50px 25px;
     }
 
